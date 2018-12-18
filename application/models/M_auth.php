@@ -8,6 +8,11 @@ class M_auth extends CI_Model {
         return $this->db->get_where($table,$where);
     }
 
+    function ambilUser() 
+    {
+        return $this->db->get('users');
+    }
+
 }
 
 /* End of file M_auth.php */
