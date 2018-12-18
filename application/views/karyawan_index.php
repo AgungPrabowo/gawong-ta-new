@@ -141,7 +141,7 @@
                                                 <td><?=$value['posisi'];?></td>
                                                 <td><?=$value['phone'];?></td>
                                                 <td><?=$value['tgl_lahir'];?></td>
-                                                <td><a href="" class="btn btn-info btn-simple btn-link"><i class="fa fa-edit"></i></a> 
+                                                <td><a href="" class="btn btn-info btn-simple btn-link" data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit"></i></a> 
                                                     <a href="" class="btn btn-danger btn-simple btn-link"><i class="fa fa-trash"></i></a> 
                                                     <a href="" class="btn btn-primary btn-simple btn-link"><i class="fa fa-search"></i></a> 
                                                 </td>
@@ -155,41 +155,113 @@
                     </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
+
+            <!-- Mini Modal -->
+            <div class="modal fade modal-big modal-primary" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header justify-content-center">
+                            <div class="modal-profile">
+                                <i class="nc-icon nc-bulb-63"></i>
+                            </div>
+                        </div>
+                        <div class="modal-body text-center">
+                            <form action="<?=site_url();?>/karyawan/insert" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <select name="user_id" class="form-control">
+                                                <option value="">Pilih</option>
+                                                <?php foreach($users->result_array() as $user): ?>
+                                                <option value="<?=$user['id'];?>"><?=$user['email'];?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-1">
+                                        <div class="form-group">
+                                            <input type="text" name="ktp" class="form-control" placeholder="KTP" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="nama_depan" placeholder="Nama Depan" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="nama_belakang" placeholder="Nama Belakang" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="posisi">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="phone" placeholder="No Handphone" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <select name="jenis_kelamin" class="form-control" required>
+                                                <option value="">Pilih</option>
+                                                <option value="laki-laki">Laki-Laki</option>
+                                                <option value="perempuan">Perempuan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-1">
+                                        <div class="form-group">
+                                            <input type="date" class="form-control" name="tgl_lahir" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 pr-1">
+                                        <div class="form-group">
+                                            <select name="agama" class="form-control" required>
+                                                <option value="">Pilih</option>
+                                                <?php foreach($agama as $val): ?>
+                                                <option value="<?=$val;?>"><?=strtoupper($val);?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-1">
+                                        <div class="form-group">
+                                            <select name="status" class="form-control" required>
+                                                <option value="">Pilih</option>
+                                                <?php foreach($status as $val):?>
+                                                <option value="<?=$val;?>"><?=strtoupper($val);?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea rows="10" cols="10" class="form-control" placeholder="Alamat Lengkap" name="alamat"></textarea required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Submit</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </footer>
+            </div>
+            <!--  End Modal -->
+
         </div>
     </div>
 <?php $this->load->view($footer);?>
