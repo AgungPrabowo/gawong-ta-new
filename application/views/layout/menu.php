@@ -25,9 +25,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./table.html">
+                        <a class="nav-link" href="<?=site_url();?>/user">
                             <i class="nc-icon nc-notes"></i>
-                            <p><?=base_url();?></p>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
